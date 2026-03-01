@@ -1,0 +1,15 @@
+/home/jack/projects/Code-server/MyProject/bin/Debug/net8.0/MyProject
+/home/jack/projects/Code-server/MyProject/bin/Debug/net8.0/MyProject.deps.json
+/home/jack/projects/Code-server/MyProject/bin/Debug/net8.0/MyProject.runtimeconfig.json
+/home/jack/projects/Code-server/MyProject/bin/Debug/net8.0/MyProject.dll
+/home/jack/projects/Code-server/MyProject/bin/Debug/net8.0/MyProject.pdb
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.GeneratedMSBuildEditorConfig.editorconfig
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.AssemblyInfoInputs.cache
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.AssemblyInfo.cs
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.csproj.CoreCompileInputs.cache
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.sourcelink.json
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.dll
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/refint/MyProject.dll
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.pdb
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/MyProject.genruntimeconfig.cache
+/home/jack/projects/Code-server/MyProject/obj/Debug/net8.0/ref/MyProject.dll

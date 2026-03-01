@@ -1,0 +1,31 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (NetCoreDbg)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // 프로젝트 빌드 결과물 경로 (net8.0 및 MyProject.dll 확인)
+            "program": "${workspaceFolder}/bin/Debug/net8.0/MyProject.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "logging": {
+                "moduleLoad": false,
+                "diagnosticsLog": {
+                    "protocolMessages": false
+                }
+            },
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "bash",
+                "pipeArgs": ["-c"],
+                // 확인하신 삼중 폴더 구조의 실제 실행 파일 경로
+                "debuggerPath": "/home/jack/netcoredbg/netcoredbg/netcoredbg"
+            }
+        }
+    ]
+}
