@@ -1,6 +1,3 @@
-﻿// 싱글톤 패턴 -> 이 클래스로 찍어낸 객체(인스턴스)는 프로그램 전체를 통틀어 하나만 존재하도록 보장한다
-// 싱글톤은 클래스 안에 자기 자신의 객체를 담아둘 static 변수를 하나 만듦, 보통 이름을 Instance라고 지음
-
 // 정적 멤버(static) -> 객체들이 데이터를 공유하게 만드는 마법같은 키워드
 // 전역에서 관리되는 단 하나의 데이터 ex) 게임오버상태, 스테이지 레벨, 총점수
 
@@ -8,26 +5,6 @@ using System;
 
 namespace MakeAssassin
 {
-    class GameManager
-    {
-        public static GameManager Instance; // GameManager형식의 정적 변수 Instance생성 -> GameManager의 유일한 리모컨 
-        public int TotalKills = 0;
-
-        public GameManager() // 생성자 실행시 최초에 생성될 때를 리모컨으로 지정
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-        }
-
-        public void AddKillCount(int count)
-        {
-            TotalKills += count;
-            Console.WriteLine($"마물 {count}마리 토벌! (총 누적 토벌 수: {TotalKills})");
-        }
-    }
-
     class Character
     {
         public string Name { get; set; }
@@ -41,7 +18,7 @@ namespace MakeAssassin
             this.Hp = Hp;
         }
 
-        // 메소드, 자식이 원하는대로 변형할수 있도록(override) virtual 붙임
+        // 메소드1, 자식이 원하는대로 변형할수 있도록(override) virtual 붙임
         virtual public void TakeDamage(int damage)
         {
             Hp -= damage;
@@ -53,13 +30,6 @@ namespace MakeAssassin
         {
             GuildGold += amount;
             Console.WriteLine($"길드금고에 {amount}G 가 추가되었습니다. (총 길드 자금: {GuildGold}G)");
-        }
-
-        // 메소드
-        public void Hunt()
-        {
-            Console.WriteLine($"{Name} 이(가) 마물을 사냥했습니다!");
-            GameManager.Instance.AddKillCount(1);
         }
     }
 
@@ -107,14 +77,12 @@ namespace MakeAssassin
     {
         public static void Main()
         {
-            GameManager manager = new GameManager();
-
             Assassin assassin = new Assassin("에지오", 100);
             Knight knight = new Knight("아서", 150);
 
-            assassin.Hunt();
-            assassin.Hunt();
-            knight.Hunt();
+            Character.EarnGold(50);
+            Character.EarnGold(150);
+
         }
     }
 
