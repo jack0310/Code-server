@@ -15,7 +15,7 @@ namespace MakeAssassin
         }
 
         // 메소드
-        public void TakeDamage(int damage)
+        virtual public void TakeDamage(int damage)
         {
             Hp -= damage;
             Console.WriteLine($"{Name} 이(가) {damage}의 데미지를 입었습니다. (남은체력: {Hp})");
@@ -24,8 +24,24 @@ namespace MakeAssassin
 
     class Assassin : Character
     {
+        private Random rand = new Random(); // 랜덤 객체 생성
+        
         public Assassin(string Name, int Hp) :base(Name, Hp) // 이름과 체력을 입력받아 부모 클래스의 생성자로 넘겨줌
         {          
+        }
+
+        public override void TakeDamage(int damage)
+        {
+            int chance = rand.Next(1,101);
+
+            if (chance <= 30)
+            {
+                Console.WriteLine($"{Name} 이(가) 민첩하게 공격을 회피했습니다! (받은 데미지: 0)");
+            }
+            else
+            {
+                base.TakeDamage(damage);
+            }
         }
 
         public void Assassinate()
@@ -41,7 +57,10 @@ namespace MakeAssassin
         {
             Assassin assassin = new Assassin("에지오", 100);
 
-            assassin.TakeDamage(30);
+            for (int i=0 ; i<5 ; i++)
+            {
+            assassin.TakeDamage(30);                
+            }
 
             assassin.Assassinate();
         }
