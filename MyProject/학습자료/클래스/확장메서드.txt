@@ -1,0 +1,25 @@
+using System;
+
+namespace Extention
+{
+    public static class NumberExtersion
+    {
+        public static string ToGold(this int amount)
+        {
+            return amount + "G";
+        }
+    }
+
+    class MainApp
+    {
+        public static void Main()
+        {
+            int money = 500;
+            Console.WriteLine($"현재 소지금은{money.ToGold()} 입니다.");
+
+            Console.WriteLine(1599.ToGold());
+        }
+
+    }
+
+}

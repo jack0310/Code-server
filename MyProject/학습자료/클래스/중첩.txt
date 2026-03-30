@@ -1,0 +1,102 @@
+// 정적 멤버(static) -> 객체들이 데이터를 공유하게 만드는 마법같은 키워드
+// 전역에서 관리되는 단 하나의 데이터 ex) 게임오버상태, 스테이지 레벨, 총점수
+
+using System;
+
+namespace MakeAssassin
+{
+    class Guild
+    {
+        private string secretPassword = "단검은_등을_노린다";
+
+        public class Accountant
+        {
+            public void ShowSecret(Guild guild)
+            {
+                Console.WriteLine($"회계사가 금고를 엽니다. 비밀번호는 [{guild.secretPassword}] 입니다.");
+            }
+        }    
+    }
+
+    class Character
+    {
+        public string Name { get; set; }
+        public int Hp { get; set; }
+        public static int GuildGold { get; set; } = 0;
+
+        // 생성자
+        public Character(string Name, int Hp)
+        {
+            this.Name = Name;
+            this.Hp = Hp;
+        }
+
+        // 메소드1, 자식이 원하는대로 변형할수 있도록(override) virtual 붙임
+        virtual public void TakeDamage(int damage)
+        {
+            Hp -= damage;
+            Console.WriteLine($"{Name} 이(가) {damage}의 데미지를 입었습니다. (남은체력: {Hp})");
+        }
+
+        // 정적 메소드
+        public static void EarnGold(int amount)
+        {
+            GuildGold += amount;
+            Console.WriteLine($"길드금고에 {amount}G 가 추가되었습니다. (총 길드 자금: {GuildGold}G)");
+        }
+    }
+
+    class Assassin : Character
+    {
+        private Random rand = new Random(); // 랜덤 객체 생성
+        
+        public Assassin(string Name, int Hp) :base(Name, Hp) // 이름과 체력을 입력받아 부모 클래스의 생성자로 넘겨줌
+        {          
+        }
+
+        public override void TakeDamage(int damage)
+        {
+            int chance = rand.Next(1,101);
+
+            if (chance <= 30)
+            {
+                Console.WriteLine($"{Name} 이(가) 민첩하게 공격을 회피했습니다! (받은 데미지: 0)");
+            }
+            else
+            {
+                base.TakeDamage(damage);
+            }
+        }
+
+        public void Assassinate()
+        {
+            Console.WriteLine($"{Name} 이(가) 은신후 치명적인 암살 공격을 시도합니다!");
+        }
+    }
+
+    class Knight : Character
+    {
+        //생성자
+        public Knight(string Name, int Hp) : base(Name, Hp){}
+
+        public void Block()
+        {
+            Console.WriteLine($"{Name} 이(가) 방패를 들어 공격을 막아냅니다!");
+        }
+    }
+    
+
+    class MainApp
+    {
+        public static void Main()
+        {
+            Guild Myguild = new Guild();
+            Guild.Accountant npc = new Guild.Accountant();
+
+            npc.ShowSecret(Myguild);
+
+
+        }
+    }
+
+}
